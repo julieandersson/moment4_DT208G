@@ -6,7 +6,7 @@
   <label for="searchInput">Sök:</label>
 
   <!-- Sökfält med tvåvägsdatabindning för att filtrera kurslistan -->
-  <input type="text" [(ngModel)]="searchText" (input)="filterCourses()" placeholder="Sök efter kurskod eller kursnamn" />
+  <input type="text" id="searchInput" [(ngModel)]="searchText" (input)="filterCourses()" placeholder="Sök efter kurskod eller kursnamn" />
 
 <!--Tabell för att visa kurser-->
 <div id="table-container">
