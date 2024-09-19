@@ -1,7 +1,11 @@
-<h1>Kurslista</h1>
+  
+<div id="course-container">
+  <h1>Kurslista</h1>
 
-<ul>
-    <li *ngFor="let course of courseList">
-        {{ course.code }} : {{ course.coursename}} : {{ course.progression }} : {{ course.syllabus }}
-    </li>
-</ul>
+  <!--Etikett för sökfältet-->
+  <label for="searchInput">Sök:</label>
+
+  <!-- Sökfält med tvåvägsdatabindning för att filtrera kurslistan -->
+  <input type="text" [(ngModel)]="searchText" (input)="filterCourses()" placeholder="Sök efter kurskod eller kursnamn" />
+
+</div>  
