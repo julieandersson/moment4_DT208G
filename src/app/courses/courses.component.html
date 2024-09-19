@@ -8,4 +8,19 @@
   <!-- Sökfält med tvåvägsdatabindning för att filtrera kurslistan -->
   <input type="text" [(ngModel)]="searchText" (input)="filterCourses()" placeholder="Sök efter kurskod eller kursnamn" />
 
-</div>  
+<!--Tabell för att visa kurser-->
+<div id="table-container">
+<table>
+    <thead>
+      <tr>
+
+        <!-- Eventbinding, anropar den specifika metod med ett klick -->
+        <th (click)="setSortField('code')">Kurskod</th>
+        <th (click)="setSortField('coursename')">Kursnamn</th>
+        <th (click)="setSortField('progression')">Progression</th>
+        <th>Kursplan</th>
+      </tr>
+    </thead>
+  </table>
+</div>
+</div>
