@@ -20,7 +20,7 @@ export class CoursesComponent {
   // variabel för söktexten från inmatning
   searchText: string = '';
   // sortering av kurslistan, code och stigande ordning
-  sortField: string = 'code';
+  sortField: keyof Course = 'code'; // använder keyof Course för att inkludera giltiga fält från Course (code, coursename, progression, syllabus)
   sortDirection: 'asc' | 'desc' = 'asc';
 
   // Konstruktor för import av kurser
@@ -37,9 +37,41 @@ export class CoursesComponent {
   // Metod för att filtrera baserat på söktext
   filterCourses() {
     this.filteredCourses = this.courseList.filter(course =>
+      // Kontrollera så att kurskoden eller kursnamnet innehåller söktexten
       course.code.toLowerCase().includes(this.searchText.toLowerCase()) ||
       course.coursename.toLowerCase().includes(this.searchText.toLowerCase())
     );
+
+    this.sortCourses(); // Sorterar efter filtrering
   }
+
+  // Sorterar listan med filtrerade kurser
+  sortCourses() {
+    this.filteredCourses.sort((a, b) => {
+      // Hämtar det fält som ska användas för sortering, undviker skiftlägeskänslighet genom att använda små bokstäver
+      const fieldA = a[this.sortField].toLowerCase();
+      const fieldB = b[this.sortField].toLowerCase();
+
+      if (fieldA < fieldB) return this.sortDirection === 'asc' ? -1 : 1;
+      if (fieldA > fieldB) return this.sortDirection === 'asc' ? 1 : -1;
+      return 0;
+    });
+  }
+
+  // Metod för att sätta sorteringsfält och vända sorteringsordning
+  setSortField(field: keyof Course) {
+    // Om det valda sorteringsfältet redan är det aktuella fältet
+    if (this.sortField === field) {
+      // Vänd sorteringsordningen: om vi var i stigande (asc), byt till fallande (desc) och vice versa
+      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+      this.sortField = field;
+      // Sätt sorteringsordningen till stigande (asc) som standard
+      this.sortDirection = 'asc';
+    }
+    this.sortCourses();
+  }
+
+
 
 }
