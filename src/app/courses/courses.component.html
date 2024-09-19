@@ -14,13 +14,23 @@
     <thead>
       <tr>
 
-        <!-- Eventbinding, anropar den specifika metod med ett klick -->
+        <!-- Eventbinding, anropar den specifika metoden med ett klick -->
         <th (click)="setSortField('code')">Kurskod</th>
         <th (click)="setSortField('coursename')">Kursnamn</th>
         <th (click)="setSortField('progression')">Progression</th>
         <th>Kursplan</th>
       </tr>
     </thead>
+    <tbody>
+        <!--iteterar över varje kurs med *ngFor i filteredCourses-arrayen-->
+        <tr *ngFor="let course of filteredCourses">
+        <!--Visar datan för den aktuella kursen-->
+          <td>{{ course.code }}</td>
+          <td>{{ course.coursename }}</td>
+          <td>{{ course.progression }}</td>
+          <td><a [href]="course.syllabus" target="_blank">Kursplan</a></td> <!-- Länk till kursplanen -->
+        </tr>
+      </tbody>
   </table>
 </div>
 </div>
