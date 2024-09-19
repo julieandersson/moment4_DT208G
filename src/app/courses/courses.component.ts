@@ -30,7 +30,16 @@ export class CoursesComponent {
   ngOnInit() {
     this.coursesservice.getCourses().subscribe(data => {
       this.courseList = data; // Lagrar datan i courselist
-    })
+      this.filteredCourses = data;
+    });
+  }
+
+  // Metod för att filtrera baserat på söktext
+  filterCourses() {
+    this.filteredCourses = this.courseList.filter(course =>
+      course.code.toLowerCase().includes(this.searchText.toLowerCase()) ||
+      course.coursename.toLowerCase().includes(this.searchText.toLowerCase())
+    );
   }
 
 }
