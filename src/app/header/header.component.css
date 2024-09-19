@@ -7,3 +7,10 @@ header {
     margin-bottom: 20px;
     background-color: #ff7bb7;
   }
+
+/* media queries */
+@media (max-width: 600px) {
+    header {
+    padding: 10px;
+  }
+}

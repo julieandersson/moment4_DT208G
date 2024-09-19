@@ -71,3 +71,26 @@
   a:hover {
     text-decoration: underline;
   }
+
+  /* media queries */
+
+@media (max-width: 600px) {
+  #course-container {
+      padding: 10px;
+      max-width: 90%;
+  }
+
+  thead th, tbody td {
+      padding: 5px;
+      font-size: 0.7em;
+  }
+
+  #course-container label {
+      font-size: 0.9em;
+  }
+
+  #course-container input[type="text"] {
+      font-size: 0.7em;
+      padding: 8px;
+  }
+}
