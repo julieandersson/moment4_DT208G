@@ -11,3 +11,9 @@ body {
     line-height: 2em;
     
 }
+
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 1.8em;
+  }
