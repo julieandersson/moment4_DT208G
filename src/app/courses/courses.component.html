@@ -1,1 +1,7 @@
-<p>courses works!</p>
+<h1>Kurslista</h1>
+
+<ul>
+    <li *ngFor="let course of courseList">
+        {{ course.code }} : {{ course.coursename}} : {{ course.progression }} : {{ course.syllabus }}
+    </li>
+</ul>
